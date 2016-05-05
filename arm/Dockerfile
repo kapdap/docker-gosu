@@ -12,7 +12,6 @@ ENV GOSU_DOWNLOAD_URL="https://github.com/tianon/gosu/releases/download/$GOSU_VE
 # Download and install gosu
 #   https://github.com/tianon/gosu/releases
 RUN buildDeps='curl gnupg' HOME='/root' \
-	&& set -x \
 	&& apk add --update $buildDeps \
 	&& gpg-agent --daemon \
 	&& gpg --keyserver pgp.mit.edu --recv-keys $GOSU_DOWNLOAD_KEY
