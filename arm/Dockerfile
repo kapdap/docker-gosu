@@ -1,4 +1,4 @@
-FROM multiarch/alpine:armhf-v3.3
+FROM container4armhf/armhf-alpine:3.3
 MAINTAINER @VITIMan https://github.com/VITIMan 
 
 # 036A9C25BF357DD4 - Tianon Gravi <tianon@tianon.xyz>
@@ -15,9 +15,13 @@ RUN buildDeps='curl gnupg' HOME='/root' \
 	&& set -x \
 	&& apk add --update $buildDeps \
 	&& gpg-agent --daemon \
-	&& gpg --keyserver pgp.mit.edu --recv-keys $GOSU_DOWNLOAD_KEY \
-	&& echo "trusted-key $GOSU_DOWNLOAD_KEY" >> /root/.gnupg/gpg.conf \
-	&& curl -sSL "$GOSU_DOWNLOAD_URL" > gosu-$GOSU_ARCHITECTURE \
+	&& gpg --keyserver pgp.mit.edu --recv-keys $GOSU_DOWNLOAD_KEY
+
+COPY trusted-key.sh /tmp/trusted-key.sh
+RUN chmod 755 /tmp/trusted-key.sh && /tmp/trusted-key.sh $GOSU_DOWNLOAD_KEY /root/.gnupg/gpg.conf
+
+# RUN && echo "trusted-key $GOSU_DOWNLOAD_KEY" >> /root/.gnupg/gpg.conf \
+RUN	curl -sSL "$GOSU_DOWNLOAD_URL" > gosu-$GOSU_ARCHITECTURE \
 	&& curl -sSL "$GOSU_DOWNLOAD_SIG" > gosu-$GOSU_ARCHITECTURE.asc \
 	&& gpg --verify gosu-$GOSU_ARCHITECTURE.asc \
 	&& rm -f gosu-$GOSU_ARCHITECTURE.asc \
