@@ -3,7 +3,7 @@ MAINTAINER @VITIMan https://github.com/VITIMan
 
 # 036A9C25BF357DD4 - Tianon Gravi <tianon@tianon.xyz>
 #   http://pgp.mit.edu/pks/lookup?op=vindex&search=0x036A9C25BF357DD4
-ENV GOSU_VERSION="1.7" \
+ENV GOSU_VERSION="1.10" \
 	GOSU_ARCHITECTURE="amd64"
 ENV GOSU_DOWNLOAD_URL="https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$GOSU_ARCHITECTURE" \
 	GOSU_DOWNLOAD_SIG="https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$GOSU_ARCHITECTURE.asc" \
