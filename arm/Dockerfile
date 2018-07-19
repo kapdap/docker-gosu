@@ -1,4 +1,4 @@
-FROM container4armhf/armhf-alpine:3.3
+FROM container4armhf/armhf-alpine
 MAINTAINER @VITIMan https://github.com/VITIMan 
 
 # 036A9C25BF357DD4 - Tianon Gravi <tianon@tianon.xyz>
