@@ -1,5 +1,5 @@
 FROM container4armhf/armhf-alpine
-MAINTAINER @VITIMan https://github.com/VITIMan 
+LABEL maintainer "kapdap.nz@gmail.com"
 
 # 036A9C25BF357DD4 - Tianon Gravi <tianon@tianon.xyz>
 #   http://pgp.mit.edu/pks/lookup?op=vindex&search=0x036A9C25BF357DD4
