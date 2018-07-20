@@ -1,4 +1,4 @@
-FROM container4armhf/armhf-alpine
+FROM resin/armhf-alpine
 LABEL maintainer "kapdap.nz@gmail.com"
 
 # 036A9C25BF357DD4 - Tianon Gravi <tianon@tianon.xyz>
@@ -8,6 +8,8 @@ ARG GOSU_ARCHITECTURE="armhf"
 ARG GOSU_DOWNLOAD_URL="https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$GOSU_ARCHITECTURE"
 ARG GOSU_DOWNLOAD_SIG="https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$GOSU_ARCHITECTURE.asc"
 ARG GOSU_DOWNLOAD_KEY="0x036A9C25BF357DD4"
+
+RUN [ "cross-build-start" ]
 
 # Download and install gosu
 #   https://github.com/tianon/gosu/releases
@@ -27,3 +29,5 @@ RUN buildDeps='curl gnupg' HOME='/root' \
     && rm -rf /root/.gnupg \
     && rm -rf /var/cache/apk/* \
     ;
+
+RUN [ "cross-build-end" ]
