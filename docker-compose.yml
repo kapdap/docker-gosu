@@ -6,6 +6,8 @@ services:
     build:
       context: .
       args:
-        GOSU_VERSION: ${GOSU_VERSION:-1.10}
-        GOSU_ARCHITECTURES: ${GOSU_ARCHITECTURES:-amd64 aarch64 amdhf}
-        GOSU_KEY: ${GOSU_KEY:-0x036A9C25BF357DD4}
+        GOSU_VERSION: ${GOSU_VERSION}
+        GOSU_ARCHITECTURES: ${GOSU_ARCHITECTURES}
+    environment:
+      DEBUG: 'true'
+      GPG_KEYS: ${GPG_KEYS}
