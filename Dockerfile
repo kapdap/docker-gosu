@@ -1,19 +1,22 @@
 FROM kapdap/gnupg AS source
 
-# 036A9C25BF357DD4 - Tianon Gravi <tianon@tianon.xyz>
-#   http://pgp.mit.edu/pks/lookup?op=vindex&search=0x036A9C25BF357DD4
-ENV GPG_KEYS="0x036A9C25BF357DD4"
+ENV GPG_SIGS="0x036A9C25BF357DD4"
 
-RUN /entrypoint.sh
-
-ARG GOSU_VERSION="1.10"
-ARG GOSU_ARCHITECTURES="amd64 arm64 armhf"
-
-WORKDIR /app
+RUN gpg-trust
 
 COPY base /
 
-RUN chmod +x /*.sh && /download-gosu.sh
+RUN chmod +x *.sh
+
+WORKDIR /app
+
+ARG GOSU_URL_DL=https://github.com/tianon/gosu/releases/download/__GOSU_VERSION__/gosu-__GOSU_ARCHITECTURE__
+ARG GOSU_ASC_DL=https://github.com/tianon/gosu/releases/download/__GOSU_VERSION__/gosu-__GOSU_ARCHITECTURE__.asc
+
+ARG GOSU_ARCHITECTURES="amd64 arm64 armhf"
+ARG GOSU_VERSION="1.10"
+
+RUN /download-gosu.sh
 
 FROM scratch
 LABEL maintainer "kapdap.nz@gmail.com"

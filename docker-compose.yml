@@ -9,5 +9,5 @@ services:
         GOSU_VERSION: ${GOSU_VERSION}
         GOSU_ARCHITECTURES: ${GOSU_ARCHITECTURES}
     environment:
-      DEBUG: 'true'
-      GPG_KEYS: ${GPG_KEYS}
+      DEBUG: 1
+      GPG_SIGS: ${GPG_SIGS}
