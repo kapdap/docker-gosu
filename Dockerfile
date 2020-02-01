@@ -14,7 +14,7 @@ ARG GOSU_URL_DL=https://github.com/tianon/gosu/releases/download/__GOSU_VERSION_
 ARG GOSU_ASC_DL=https://github.com/tianon/gosu/releases/download/__GOSU_VERSION__/gosu-__GOSU_ARCHITECTURE__.asc
 
 ARG GOSU_ARCHITECTURES="amd64 arm64 armhf"
-ARG GOSU_VERSION="1.10"
+ARG GOSU_VERSION="1.11"
 
 RUN /download-gosu.sh
 
