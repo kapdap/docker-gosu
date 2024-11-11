@@ -19,6 +19,6 @@ ARG GOSU_VERSION="1.17"
 RUN /download-gosu.sh
 
 FROM scratch
-LABEL maintainer "kapdap@pm.me"
+LABEL maintainer="kapdap@pm.me"
 
 COPY --from=source /app /bin
