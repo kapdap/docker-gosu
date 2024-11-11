@@ -6,7 +6,7 @@ RUN gpg-trust
 
 COPY base /
 
-RUN chmod +x *.sh
+RUN chmod +x *.sh /app/gosu
 
 WORKDIR /app
 
