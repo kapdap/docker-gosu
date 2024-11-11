@@ -1,5 +1,3 @@
-version: '2'
-
 services:
   gosu:
     image: kapdap/gosu:${GOSU_VERSION:-latest}
