@@ -1,5 +1,11 @@
 #!/bin/sh
 
-ARCH=$(["$(uname -m)" == "aarch64"] && echo "arm64" || echo "amd64")
+ARCH=$(uname -m)
+case $ARCH in
+    aarch64)    ARCH="arm64"  ;;
+    arm7l)      ARCH="armhf"  ;;
+    i386|i686)  ARCH="i386"   ;;
+    *)          ARCH="amd64"  ;;
+esac
 
 exec gosu-${ARCH} "$@"
