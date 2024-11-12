@@ -11,7 +11,6 @@ WORKDIR /app
 
 RUN apk --no-cache add dpkg \
     && gpg-trust \
-    && gpgconf --reload gpg-agent \
     && GOSU_ARCHITECTURE=$(dpkg --print-architecture | awk -F- '{ print $NF }') \
     && GOSU_URL=${GOSU_URL_DL/__GOSU_VERSION__/$GOSU_VERSION} \
     && GOSU_URL=${GOSU_URL/__GOSU_ARCHITECTURE__/$GOSU_ARCHITECTURE} \
